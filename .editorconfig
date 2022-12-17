@@ -1,0 +1,17 @@
+# Shared editor configuration <https://editorconfig.org>
+
+# This is the top-most EditorConfig file which should apply to files below
+root = true
+
+[*]
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = lf
+
+[*.{cjs,coffee,js,json,mjs,yml,ts}]
+indent_size = 2
+indent_style = space
+
+[*.txt]
+insert_final_newline = false
