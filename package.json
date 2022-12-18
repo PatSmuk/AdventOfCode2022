@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "box-intersect": "^1.0.2",
     "clone-deep": "^4.0.1",
     "iter-tools": "^7.5.0",
     "mathjs": "^11.5.0",
@@ -18,7 +17,6 @@
     "typescript": "^4.9.4"
   },
   "devDependencies": {
-    "@types/box-intersect": "^1.0.0",
     "@types/clone-deep": "^4.0.1"
   }
 }
