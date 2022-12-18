@@ -11,7 +11,7 @@ console.log(JSON.stringify(inputs, null, 2))
 `
 
 for (let i = 1; i <= 25; i++) {
-  const dir = 'd' + i
+  const dir = 'd' + i.toString().padStart(2, '0')
   try {
     mkdirSync(dir)
   } catch (err) {}
