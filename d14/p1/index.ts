@@ -5,4 +5,4 @@ function parseLine(line: string) {
 }
 
 const inputs = readInputFileLines(__dirname, parseLine)
-console.log(inputs)
+console.log(JSON.stringify(inputs, null, 2))
