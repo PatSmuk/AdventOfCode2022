@@ -1,13 +1,11 @@
 {
-  "name": "AdventOfCode2022",
+  "name": "advent-of-code-2022",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "TypeScript solutions for Advent of Code 2022",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate-dirs": "ts-node generateDirs.ts"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Pat Smuk",
   "license": "ISC",
   "dependencies": {
     "clone-deep": "^4.0.1",
