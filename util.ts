@@ -24,7 +24,7 @@ export interface AStarParams<K> {
   /** The node to start on. */
   start: K
   /** The node that we want to find the optimal path to. */
-  end: K
+  isEnd: (key: K) => boolean
   /** A function that returns an estimate of the distance from `key` to the target node. */
   getDistance: (key: K) => number
   /** A function that returns the weighting of `key`. */
@@ -34,7 +34,7 @@ export interface AStarParams<K> {
 }
 
 /** Generic implementation of A* search algorithm over a graph of nodes identified by values of type `K`. */
-export function aStarSearch<K>({ start, end, getDistance, getWeight, getNeighbours }: AStarParams<K>) {
+export function aStarSearch<K>({ start, isEnd, getDistance, getWeight, getNeighbours }: AStarParams<K>): K[] {
   let openSet: K[] = [start]
   const cameFrom = new Map<K, K>()
   const gScores = new Map<K, number>([[start, getWeight(start)]])
@@ -49,14 +49,12 @@ export function aStarSearch<K>({ start, end, getDistance, getWeight, getNeighbou
     openSet = openSet.filter(x => x != current)
 
     // If we made it to the end...
-    if (current === end) {
+    if (isEnd(current)) {
       const totalPath = [current]
-      let totalScore = getWeight(current)
 
       while (cameFrom.has(current)) {
         current = cameFrom.get(current)!
         totalPath.unshift(current)
-        totalScore += getWeight(current)
       }
 
       return totalPath
