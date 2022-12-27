@@ -1,3 +1,4 @@
+import assert from 'assert'
 import * as fs from 'fs'
 import * as path from 'path'
 
@@ -84,4 +85,42 @@ export function aStarSearch<K>({ start, isEnd, getDistance, getWeight, getNeighb
   }
 
   return []
+}
+
+export class Coord {
+  x: number
+  y: number
+
+  constructor(str: string)
+  constructor(x: number, y: number)
+  constructor(xOrString: number | string, y?: number) {
+    if (typeof xOrString === 'number') {
+      assert(y)
+      this.x = xOrString
+      this.y = y
+    } else {
+      const [l, r] = xOrString.split(',')
+      this.x = parseInt(l)
+      this.y = parseInt(r)
+      assert(!isNaN(this.x))
+      assert(!isNaN(this.y))
+    }
+  }
+
+  toString(): string {
+    return `${this.x},${this.y}`
+  }
+
+  add(coord: Coord): void
+  add(dx: number, dy: number): void
+  add(coordOrDx: Coord | number, dy?: number): void {
+    if (typeof coordOrDx === 'number') {
+      assert(dy)
+      this.x += coordOrDx
+      this.y += dy
+    } else {
+      this.x += coordOrDx.x
+      this.y += coordOrDx.y
+    }
+  }
 }
